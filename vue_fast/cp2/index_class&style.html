@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>            
+        <meta charset="UTF-8">
+        <title>网页标题</title>
+        <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    </head>
+    <body>
+        
+    <div id='app'>
+        <!-- 样式绑定的方式两种 -->
+        <!-- 原生 -->
+        <div v-show="3>1" style=" color: green ;textShadow:0 0 10px yellow">
+            {{msg}}
+        </div>
+        <!-- vue绑定 -->
+        <div v-show="3>1" :style="greenYellowbg">
+            {{msg}}
+        </div>
+
+        <!--  class 写法一 不使用绑定-->
+        <div v-show="3>1" 
+            class="active"
+            :style="greenYellowbg">
+            {{msg}}
+        </div>
+        <!-- class 写法二 动态修改-->
+        <div v-show="3>1" 
+            :class="{'active': true}"
+            :style="greenYellowbg">
+            {{msg}}
+        </div>
+
+        <!-- class 写法二 动态修改  {}中对象式的单引号可以省略  但是[] 中的省略与否有区别-->
+        <div v-show="3>1" 
+            :class="{active: true}"
+            :style="greenYellowbg">
+            {{msg}}
+        </div>
+        <!-- class 写法三 列表 -->
+        <div v-show="3>1" 
+            :class="['active','add','more']" 
+            :style="greenYellowbg">
+            {{msg}}
+        </div>
+
+        <!-- class 写法四 列表加动态修改-->
+        <div v-show="3>1" 
+            :class="['active','add','more',{'another': count>0 }]"
+            :style="greenYellowbg">
+            {{msg}}
+        </div>
+        <!-- 以上均为直接赋值的写法  acitve带了单引号 不加单引号代表data中的变量-->
+        <div v-show="3>1" 
+            :class="[active,add,more,{'another': anothor, 'ananother': true }]"
+            :style="greenYellowbg">
+            {{msg}}
+        </div>
+    </div>
+
+          <script>
+          var app = new Vue({
+              el: '#app',
+              data: {
+                  msg: 'hello vue',
+                  count: 2,
+                  greenYellowbg : {
+                      color: 'green',
+                      /* 原来是写'text-Shadow' 带-时要将key用单引号括起来 也可以使用如下驼峰形式的写法  */ 
+                      textShadow: '0 0 10px yellow'
+                  },
+                  active: 'activeclass',
+                  add: 'addclass',
+                  more: 'moreclass',
+                  anothor: true
+              }
+              
+          })
+          </script>
+    </body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>            
+        <meta charset="UTF-8">
+        <title>网页标题</title>
+        <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    </head>
+    <body>
+    <div id='app'>
+        {{msg}}
+        <p>
+            {{computedMsg}}
+        </p>
+    </div>
+          <script>
+            var outer = "outer variable";
+              /* 对vue对象进行赋值往往会便于在页面控制台调试 */
+            var app = new Vue({
+              el: '#app',
+              data: {
+                msg: 'hello computed & watch !',
+                another: 'anothor msg'
+              },
+              /* 异步场景：侦听器 */
+              watch: {
+                /* 监听变量msg */
+                msg: function (newVal, oldVal) {
+                    console.log('newval is ' + newVal + ' and oldVal is ' + oldVal)
+                }
+              },
+              /* 数据联动：计算属性 */
+              computed: {
+                  /* 根据msg实时值进行计算给到其他值 */
+                  /* 与watch对比 ： 可以监听到  多个 任意被包含的vue对象内部值的变化 如msg和anothor*/                
+                  computedMsg : function () {
+                    return 'after computed : ' + this.msg 
+                    + ', another is ' + this.another
+                    /* 但是修改vue外部对象后 计算属性不会立刻更新  
+                        需要其他内部属性更新后才会触发一并更新
+                    如 
+                       arr = 'new outer variable';
+                       app.msg = 'new msg'; 
+                    */
+                    + ' ,variable out of vue ' + outer;
+                }
+              }
+          })
+          </script>
+    </body>
+</html>
+

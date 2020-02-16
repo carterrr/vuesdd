@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>            
+        <meta charset="UTF-8">
+        <title>网页标题</title>
+        <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    </head>
+    <body>
+    <div id='app'>
+        <!-- 普通列表 -->
+        {{msg}}
+        <div v-for="item in list">
+            {{item}}
+        </div>
+        <!-- 对象列表 -->
+        <div v-for="person in objList">
+            {{person.name}}
+            {{person.age}}
+        </div>
+        <!-- for比if优先级高  混合使用 -->
+        <div v-for="person in objList">
+        <div v-if="person.age >28">
+            {{person.name}} 年龄大于28
+        </div>
+        <div v-else>
+            {{person.name}} 年龄小于28
+        </div>
+        <div v-show="person.age>28">
+            {{person.name}} 被展示了
+        </div>
+        </div>
+    </div>    
+    
+          <script>
+          var apps = new Vue({
+              el: '#app',
+              data: {
+                  msg: 'hello vue',
+                  list: [1,2,3,4,5],
+                  objList:[{
+                      name: 'carterchou',
+                      age: 27
+                  },{
+                      name: 'sq',
+                      age: 27
+                  },{
+                      name: 'mm',
+                      age: 29
+                  }]
+              }
+          })
+          </script>
+    </body>
+</html>
+

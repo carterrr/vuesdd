@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>            
+        <meta charset="UTF-8">
+        <title>网页标题</title>
+        <style>
+        .bg{
+            color:red;
+        }
+        </style>
+        <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    </head>
+    <body>
+    <div id='a3'>
+        <div class="bg" v-bind:id='id1'>
+            网页显示红色内容
+            {{msg}}
+        </div>
+        <div  class="bg" id='a2'>
+           abc {{msg}}
+        </div>
+        {{(count + 1)*10}}
+
+        {{template}}
+        <div v-html='template'></div>
+        
+        <a href="http://www.baidu.com">百度</a>
+        <a v-bind:href='url'>百度</a>
+        <a :href='url1'>慕课网</a>
+
+        <button type="button" v-on:click="add()">数字加一</button>
+        <button type="button" @click="decrease()">数字减一</button>
+
+    </div>
+          <script>
+          new Vue({
+              el: '#a3',
+              data: {
+                  id1: 'app-bind',
+                  msg: 'Vue used',
+                  count: 0,
+                  url: 'http://www.baidu.com',
+                  url1: 'http://www.imooc.com',
+                  template: '<div>hello template!</div>'
+              },
+              methods: {
+                add: function() {
+                      this.count ++;
+                  },
+                  decrease: function() {
+                      this.count --;
+                  }
+              }
+          })
+          </script>
+    </body>
+</html>
+
+<!-- 模板中可以进行变量计算  支持js表达式 -->
+<!-- 也支持模板代码块展示  语法  v-template -->
+<!-- 还支持绑定属性 语法 v-bind 简写: 页面变量统一管理在data里 后面方便变更-->
+<!-- 支持事件绑定 语法 v-on  简写@ 关联事件到方法上   方法统一在methods中进行管理-->

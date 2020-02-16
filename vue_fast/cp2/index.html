@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>            
+        <meta charset="UTF-8">
+        <title>网页标题</title>
+        <style>
+        .bg{
+            color:red;
+        }
+        </style>
+        <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    </head>
+    <body>
+    <div id='a3'>
+        <div class="bg" id='a1'>
+            网页显示红色内容
+            {{msg}}
+        </div>
+        <div  class="bg" id='a2'>
+           abc {{msg}}
+        </div>
+    </div>
+          <script>
+          new Vue({
+              el: '#a3',
+              data: {
+                  msg: 'Vue used'
+              }
+          })
+          </script>
+    </body>
+</html>
+
+<!-- 与class 绑定的  style及el绑定到div上  也可用id绑定  注意div中的id里不写. 和 # -->
+<!-- CDN的使用 -->
+<!-- vue文件的三部分  ： 样式  div模板 脚本  -->

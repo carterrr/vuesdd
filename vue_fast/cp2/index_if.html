@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>            
+        <meta charset="UTF-8">
+        <title>网页标题</title>
+        <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    </head>
+    <body>
+    <div id='app'>
+        <div v-if="count > 0">
+            分支1：count大于0 ，值为{{count}}
+        </div>
+        <div v-else-if="count<=0 && count>-6">
+            分支2：count小于等于0且大于-6 ，值为{{count}}
+        </div>
+        <div v-else=>
+            分支3：count大于等于-6 ，值为{{count}}
+        </div>
+        <div v-show="count>0">
+            展示： count大于0
+        </div>
+        <p></p>
+        <button @click="add">加一</button>
+        <p></p>
+        <button @click="minus">减一</button>
+    </div>
+          <script>
+          var app = new Vue({
+              el: '#app',
+              data: {
+                  msg: 'hello vue',
+                  count: 0
+              },
+              methods:{
+                  add: function() {
+                      this.count++
+                  },
+                  minus: function() {
+                      this.count --
+                  }
+
+              }
+
+          })
+          </script>
+    </body>
+</html>
+
+<!-- v-if  和 v-show 的用法-->
